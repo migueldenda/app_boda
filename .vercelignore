@@ -1,0 +1,39 @@
+# Base de datos
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3
+
+# Media files
+media/
+staticfiles/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Django
+*.log
+local_settings.py
+
+# Build files
+build.sh
