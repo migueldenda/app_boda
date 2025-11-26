@@ -14,5 +14,8 @@
       "src": "/(.*)",
       "dest": "proyectoboda/proyectoboda/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "/var/task/proyectoboda"
+  }
 }
