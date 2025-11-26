@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa - Yoli & Fede</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Lobster&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f5e6c8 100%);
+            min-height: 100vh;
+            padding: 5rem 2rem 3rem 2rem;
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .btn-volver:hover {
+            background: #8b7355;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .container-itinerario {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .titulo-itinerario {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+        }
+
+        .descripcion-mapa {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #5a4a3a;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+
+        .mapa-container {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            margin-bottom: 2.5rem;
+        }
+
+        .mapa-iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .btn-google-maps {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            background: #8b7355;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-google-maps:hover {
+            background: #5a4a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .btn-google-maps:active {
+            transform: translateY(-1px);
+        }
+
+        .icono-maps {
+            margin-right: 0.5rem;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 5rem 1.5rem 3rem 1.5rem;
+            }
+
+            .mapa-iframe {
+                height: 350px;
+            }
+
+            .descripcion-mapa {
+                margin-bottom: 2rem;
+            }
+
+            .btn-google-maps {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 480px) {
+            body {
+                padding: 4.5rem 1rem 2rem 1rem;
+            }
+
+            .btn-volver {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .mapa-container {
+                padding: 1rem;
+            }
+
+            .mapa-iframe {
+                height: 300px;
+            }
+
+            .descripcion-mapa {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+                padding: 0;
+            }
+
+            .btn-google-maps {
+                padding: 0.9rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .titulo-itinerario {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Móvil muy pequeño */
+        @media (max-width: 360px) {
+            body {
+                padding: 4rem 0.75rem 1.5rem 0.75rem;
+            }
+
+            .mapa-iframe {
+                height: 250px;
+            }
+
+            .btn-google-maps {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'index' %} #roadmap" class="btn-volver">← Volver</a>
+
+    <div class="container-itinerario">
+        <h1 class="titulo-itinerario">Mapa</h1>
+        
+        <p class="descripcion-mapa">
+            Os compartimos la ruta de Google Maps desde la iglesia<br class="br-desktop"> de las Calatravas,
+            hasta la finca de celebración en Valdemorillo
+        </p>
+
+        <div class="mapa-container">
+            <iframe 
+                class="mapa-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d97084.99999999999!2d-3.9!3d40.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0xd4228e23705d39f%3A0x4c1f5b7b5b5b5b5b!2sIglesia%20de%20las%20Calatravas%2C%20C%2FAlcal%C3%A1%2C%2025%2C%20Madrid!3m2!1d40.419215!2d-3.6990699999999997!4m5!1s0xd418c0000000001%3A0x1234567890abcdef!2sValdemorillo%2C%20Madrid!3m2!1d40.503333!2d-4.067778!5e0!3m2!1ses!2ses!4v1234567890123!5m2!1ses!2ses"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <a href="https://www.google.com/maps/dir/Iglesia+de+las+Calatravas,+C%2FAlcalá,+25,+Madrid/Valdemorillo,+Madrid" 
+           target="_blank" 
+           class="btn-google-maps">
+            <span class="icono-maps"></span> Ir a Google Maps
+        </a>
+    </div>
+</body>
+
+</html>

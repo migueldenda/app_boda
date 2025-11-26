@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirma tu Asistencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f5e6c8 100%);
+            min-height: 100vh;
+            padding: 5rem 2rem 3rem 2rem;
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .btn-volver:hover {
+            background: #8b7355;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .container-itinerario {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .titulo-itinerario {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+        }
+
+        .descripcion-mapa {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #5a4a3a;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+
+        .br-desktop {
+            display: inline;
+        }
+
+        .btn-confirmar {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            background: #8b7355;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+            margin-bottom: 4rem;
+        }
+
+        .btn-confirmar:hover {
+            background: #5a4a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .btn-confirmar:active {
+            transform: translateY(-1px);
+        }
+
+        .seccion {
+            margin-bottom: 4rem;
+        }
+
+        .seccion-autobus {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .seccion-autobus::before {
+            content: '🚌';
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.1;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .subtitulo {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #5a4a3a;
+            margin-bottom: 1.5rem;
+        }
+
+        .seccion-alergia {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 5rem 1.5rem 3rem 1.5rem;
+            }
+
+            .descripcion-mapa {
+                margin-bottom: 2rem;
+            }
+
+            .btn-confirmar {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            .seccion-autobus {
+                padding: 2rem 1.5rem;
+            }
+
+            .seccion-autobus::before {
+                font-size: 3rem;
+                right: 1rem;
+            }
+
+            .br-desktop {
+                display: none;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 480px) {
+            body {
+                padding: 4.5rem 1rem 2rem 1rem;
+            }
+
+            .btn-volver {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .descripcion-mapa {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+                padding: 0;
+            }
+
+            .btn-confirmar {
+                padding: 0.9rem 2rem;
+                font-size: 0.9rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .titulo-itinerario {
+                margin-bottom: 1.5rem;
+            }
+
+            .seccion {
+                margin-bottom: 3rem;
+            }
+
+            .seccion-autobus {
+                padding: 1.5rem 1rem;
+                margin-bottom: 3rem;
+            }
+
+            .seccion-autobus::before {
+                font-size: 2.5rem;
+                right: 0.5rem;
+            }
+
+            .seccion-alergia {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Móvil muy pequeño */
+        @media (max-width: 360px) {
+            body {
+                padding: 4rem 0.75rem 1.5rem 0.75rem;
+            }
+
+            .btn-confirmar {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .seccion-autobus::before {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}#roadmap" class="btn-volver">← Volver</a>
+    
+    <div class="container-itinerario">
+        <section class="seccion">
+            <h1 class="titulo-itinerario">Confirma tu asistencia</h1>
+            <p class="descripcion-mapa">
+                Esperamos contar contigo para una ocasión tan especial, por eso<br class="br-desktop"> nos encantaría 
+                que nos confirmaras tu asistencia para tener todo listo para el GRAN DÍA
+            </p>
+            <a href="#" class="btn-confirmar">Confirmar Aquí</a>
+        </section>
+
+        <section class="seccion seccion-autobus">
+            <h2 class="subtitulo">¡Os llevamos!</h2>
+            <p class="descripcion-mapa">
+                Si quieres disfrutar sin preocuparte y no conducir,<br class="br-desktop"> confirma tu plaza
+                para el autobús en el enlace de arriba antes del (?) de Junio
+            </p>
+        </section>
+
+        <section class="seccion seccion-alergia">
+            <h2 class="subtitulo">¿Tienes alguna alergia o intolerancia?</h2>
+            <p class="descripcion-mapa">
+                Si tienes alguna alergia, intolerancia alimentaria o preferencia que necesitemos saber,<br class="br-desktop">
+                por favor indícalo también en el enlace de arriba
+            </p>
+        </section>
+    </div>
+</body>
+</html>

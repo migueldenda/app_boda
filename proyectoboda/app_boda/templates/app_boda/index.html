@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLI & FEDE - BODA</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app_boda/css/style.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Lobster&display=swap"
+        rel="stylesheet">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<body>
+    {% load static %}
+    <div class="imagen_fondo">
+        <div id="nombres_presentacion">NOS CASAMOS
+            <div id="nombres-pareja">YOLI <br> & <br> FEDE</div>
+            <div id="fecha_boda">6 DE JUNIO DE 2026</div>
+        </div>
+    </div>
+    <div class="cuenta-atras">
+        <div id="comienza-cuenta"> COMIENZA <br> LA CUENTA ATRÁS</div>
+        <div id="cuenta-atras"></div>
+        <div id="cenefa"></div>
+        <ul class="roadmap" id="roadmap">
+            <li><a href="{% url 'itinerario' %}">Itinerario</a></li>
+            <li><a href="{% url 'mapa' %}">Mapa</a></li>
+            <li><a href="{% url 'pre_formulario' %}">Confirma tu asistencia</a></li>
+            <li>Contacto</li>
+        </ul>
+    </div>
+</body>
+<script src="../../static/app_boda/js/script.js"></script>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("#cenefa", {
+        opacity: 0,
+        y: 35,
+        duration: 1.6,
+        ease: "power1.out",
+        scrollTrigger: {
+            trigger: "#cenefa",
+            start: "top 85%",
+            end: "top 50%",
+            toggleActions: "play none none none",
+        }
+    });
+</script>
+
+</html>

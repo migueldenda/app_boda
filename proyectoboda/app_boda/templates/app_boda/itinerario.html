@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itinerario - Yoli & Fede</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Lobster&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f5e6c8 100%);
+            min-height: 100vh;
+            padding: 5rem 2rem 3rem 2rem;
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .btn-volver:hover {
+            background: #8b7355;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .container-itinerario {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .titulo-itinerario {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: #5a4a3a;
+            margin-bottom: 3rem;
+        }
+
+        .eventos-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+            width: 100%;
+        }
+
+        #ceremonia,
+        #celebracion {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        #ceremonia:hover,
+        #celebracion:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(139, 115, 85, 0.25);
+        }
+
+        #ceremonia img {
+            width: 100%;
+            max-width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            background: #e8e3da;
+        }
+        #celebracion img {
+            width: 100%;
+            max-width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            background: #e8e3da;
+        }
+        .evento-tipo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #8b7355;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e8e3da;
+        }
+
+        .evento-detalles {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+        }
+
+        .evento-hora {
+            font-weight: 600;
+            color: #8b7355;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-top: 1rem;
+        }
+
+        .btn-ubicacion {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            background: #8b7355;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-ubicacion:hover {
+            background: #5a4a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .btn-ubicacion:active {
+            transform: translateY(-1px);
+        }
+
+        .icono-ubicacion {
+            margin-right: 0.5rem;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 5rem 1.5rem 3rem 1.5rem;
+            }
+
+            .eventos-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            #ceremonia,
+            #celebracion {
+                padding: 2rem 1.5rem;
+            }
+
+            .titulo-itinerario {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 480px) {
+            body {
+                padding: 4.5rem 1rem 2rem 1rem;
+            }
+
+            .btn-volver {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .eventos-wrapper {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+
+            #ceremonia,
+            #celebracion {
+                padding: 1.5rem 1rem;
+            }
+
+            #ceremonia img {
+                height: 200px;
+            }
+
+            #celebracion img {
+                height: 200px;
+            }
+            .btn-ubicacion {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .titulo-itinerario {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Móvil muy pequeño */
+        @media (max-width: 360px) {
+            body {
+                padding: 4rem 0.75rem 1.5rem 0.75rem;
+            }
+
+            #ceremonia,
+            #celebracion {
+                padding: 1.25rem 0.75rem;
+            }
+
+            .btn-ubicacion {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'index' %}#roadmap" class="btn-volver">← Volver</a>
+
+    <div class="container-itinerario">
+        <h1 class="titulo-itinerario">Itinerario del Día</h1>
+
+        <div class="eventos-wrapper">
+            <div id="ceremonia">
+                <img src="../../../media/iglesia_boda.jpeg" alt="Iglesia de las Calatravas">
+                <p class="evento-tipo">Ceremonia</p>
+                <p class="evento-detalles">
+                    Iglesia de las Calatravas<br>
+                    C/Alcalá 25, Centro, 28014
+                </p>
+                <p class="evento-hora">12:30 PM</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Iglesia+de+las+Calatravas+C%2FAlcalá+25+Madrid"
+                    target="_blank" class="btn-ubicacion">
+                    <span class="icono-ubicacion">📍</span> Ver Ubicación
+                </a>
+            </div>
+
+            <div id="celebracion">
+                <img src="../../../media/ubicacion_casa.jpg" alt="Iglesia de las Calatravas">
+                <p class="evento-tipo">Celebración</p>
+                <p class="evento-detalles">
+                    Valdemorillo <br>
+                    C/Alcoraz 3, 28210
+                </p>
+                <p class="evento-hora">14:30 PM</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=C%2FAlcoraz+3" target="_blank"
+                    class="btn-ubicacion">
+                    <span class="icono-ubicacion">📍</span> Ver Ubicación
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,410 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .imagen_fondo {
+            background-image: url("../../../../media/foto_portada.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-attachment: fixed;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 15vh;
+            padding-bottom: 5vh;
+        }
+
+        .imagen_fondo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.3) 0%, 
+                rgba(0,0,0,0.1) 50%, 
+                rgba(0,0,0,0.4) 100%);
+        }
+
+        #nombres_presentacion {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        #nombres_presentacion {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+        }
+
+        #nombres_presentacion::before {
+            
+            display: block;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+        }
+
+        #nombres-pareja {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 1.5rem 0;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fadeInScale 1.8s ease-out 0.8s forwards;
+        }
+
+        #nombres-pareja br {
+            display: block;
+            content: "";
+            margin: 0.3em 0;
+        }
+
+        #fecha_boda {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 2.5rem;
+            padding: 1rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.6);
+            border-bottom: 1px solid rgba(255,255,255,0.6);
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1.5s forwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .imagen_fondo {
+                padding-top: 20vh;
+            }
+
+            #nombres_presentacion > span {
+                letter-spacing: 0.3em;
+                margin-bottom: 1.5rem;
+            }
+
+            #fecha_boda {
+                letter-spacing: 0.2em;
+                padding: 0.8rem 1.5rem;
+                margin-top: 2rem;
+            }
+        }
+
+
+        /* ---------------------------------------------------------------- */
+
+
+
+        .cuenta-atras {
+            width: 100%;
+            /* padding: 2rem 2rem; */
+            background: linear-gradient(135deg, #f8f5f0 0%, #f5e6c8 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 45vh;
+        }
+
+        #comienza-cuenta {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            /* text-transform: uppercase; */
+            text-align: center;
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        #cuenta-atras {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .tiempo-bloque {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tiempo-bloque:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .tiempo-numero {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: #8b7355;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .tiempo-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #5a4a3a;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .tiempo-bloque.pulse {
+            animation: pulse 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .cuenta-atras {
+                padding: 3rem 0rem;
+            }
+
+            #cuenta-atras {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.75rem;
+                max-width: 100%;
+            }
+
+            .tiempo-bloque {
+                padding: 1rem 0.5rem;
+            }
+
+            .tiempo-numero {
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
+                margin-bottom: 0.3rem;
+            }
+
+            .tiempo-label {
+                font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+                letter-spacing: 0.1em;
+            }
+
+            #comienza-cuenta {
+                margin-bottom: 2rem;
+                font-size: clamp(3rem, 6vw, 4.5rem);
+            }
+        }
+    @media (max-width: 480px) {
+    .cuenta-atras {
+        padding: 3rem 0rem;
+    }
+
+    #cuenta-atras {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        max-width: 100%;
+    }
+
+    .tiempo-bloque {
+        padding: 1rem 0.5rem;
+    }
+
+    .tiempo-numero {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        margin-bottom: 0.3rem;
+    }
+
+    .tiempo-label {
+        font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+        letter-spacing: 0.1em;
+    }
+
+    #comienza-cuenta {
+        margin-bottom: 2rem;
+        font-size: clamp(2rem, 5vw, 4rem);
+    }
+}
+
+/* ------------------------------------------------------------------------------------ */
+
+#cenefa {
+    background-image: url("../../../../media/cenefitas.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 0;
+    padding-bottom: 40%; 
+    position: relative;
+}
+
+/* ---------------------------------------------------------------------- */
+
+.roadmap {
+    list-style: none;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    counter-reset: roadmap-counter;
+}
+
+.roadmap li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #5a4a3a;
+    padding: 1.5rem 1.5rem 1.5rem 4rem;
+    margin-bottom: 1.5rem;
+    background: white;
+    border-left: 4px solid #8b7355;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    counter-increment: roadmap-counter;
+    transition: all 0.3s ease;
+}
+
+.roadmap li::before {
+    content: counter(roadmap-counter);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #8b7355;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.roadmap li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(139, 115, 85, 0.3);
+}
+.roadmap li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.roadmap li a:hover {
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .roadmap {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .roadmap li {
+        padding: 1.3rem 1.3rem 1.3rem 3.5rem;
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+    }
+    
+    .roadmap li::before {
+        width: 28px;
+        height: 28px;
+        left: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .roadmap {
+        padding: 2rem 1rem;
+    }
+    
+    .roadmap li {
+        padding: 1.2rem 1rem 1.2rem 3rem;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .roadmap li::before {
+        width: 25px;
+        height: 25px;
+        left: 0.5rem;
+        font-size: 0.85rem;
+    }
+}
