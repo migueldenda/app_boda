@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>YOLI & FEDE - BODA</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'app_boda/css/style.css' %}">
@@ -28,14 +29,36 @@
     <div class="cuenta-atras">
         <div id="comienza-cuenta"> COMIENZA <br> LA CUENTA ATRÁS</div>
         <div id="cuenta-atras"></div>
-        <div id="cenefa"></div>
+    <div id="cenefa"></div>
+     {% load static %}
+    {% if messages %}
+    <div id="message-container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
         <ul class="roadmap" id="roadmap">
             <li><a href="{% url 'itinerario' %}">Itinerario</a></li>
             <li><a href="{% url 'mapa' %}">Mapa</a></li>
             <li><a href="{% url 'pre_formulario' %}">Confirma tu asistencia</a></li>
-            <li>Contacto</li>
+            <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
     </div>
+    <div class="cierre">
+        <h1>¡Muchas gracias! <i class="fa-regular fa-heart fa-rotate-by"
+                style="color: #f5e6c8; --fa-rotate-angle: 35deg;"></i></h1>
+        <p>
+            Tu presencia es el mayor regalo y si además quieres ayudarnos
+            en nuestra nueva etapa juntos, te facilitamos nuestro
+            número de cuenta:<br>
+            <strong>ES11 YA OS PAGA RAN LO QUE SEA</strong>
+        </p>
+    </div>
+
 </body>
 <script src="../../static/app_boda/js/script.js"></script>
 <script>

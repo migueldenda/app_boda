@@ -12,8 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-0lqb+0(7ty9kz)ka@uy$1!#rngwwd5cr!j%kyf9c&h)a(#8c*='
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# SOLO ACTIVAR ESTA LINEA CUANDO LO QUIERA EN PYTHONANYWHERE
+# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app','.now.sh','localhost','127.0.0.1']
 
@@ -118,8 +119,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Vercel necesita esto
-if os.environ.get('VERCEL_ENV'):
-    DEBUG = False
+# if os.environ.get('VERCEL_ENV'):
+#     DEBUG = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

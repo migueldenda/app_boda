@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Asistencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f8f5f0 0%, #f5e6c8 100%);
+            min-height: 100vh;
+            padding: 5rem 2rem 3rem 2rem;
+        }
+
+        .btn-volver {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .btn-volver:hover {
+            background: #8b7355;
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .container-itinerario {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #5a4a3a;
+            margin-bottom: 1rem;
+        }
+
+        .container-itinerario > p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #5a4a3a;
+            margin-bottom: 3rem;
+        }
+
+        form {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #5a4a3a;
+            margin-bottom: 0.8rem;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a3a;
+            background: #f8f5f0;
+            border: 2px solid #e8dcc8;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #8b7355;
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.8rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #8b7355;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            background: #8b7355;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+            margin-top: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background: #5a4a3a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(-1px);
+        }
+
+        /* Estilos para mensajes de error de Django */
+        .errorlist {
+            list-style: none;
+            color: #d9534f;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 5rem 1.5rem 3rem 1.5rem;
+            }
+
+            form {
+                padding: 2rem;
+            }
+
+            .radio-group {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Móvil */
+        @media (max-width: 480px) {
+            body {
+                padding: 4.5rem 1rem 2rem 1rem;
+            }
+
+            .btn-volver {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            form {
+                padding: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            button[type="submit"] {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Móvil muy pequeño */
+        @media (max-width: 360px) {
+            body {
+                padding: 4rem 0.75rem 1.5rem 0.75rem;
+            }
+
+            form {
+                padding: 1.2rem;
+            }
+
+            button[type="submit"] {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}#roadmap" class="btn-volver">← Volver</a>
+    
+    <div class="container-itinerario">
+        <h1>FORMULARIO DE ASISTENCIA</h1>
+        <p>El formulario es individual para poder crear<br> un día único y disfrutar al máximo</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_nombre">Nombre</label>
+                {{ form.nombre }}
+                {{ form.nombre.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_apellidos">Apellidos</label>
+                {{ form.apellidos }}
+                {{ form.apellidos.errors }}
+            </div>
+
+            <div class="form-group">
+                <label>¿Asistirás?</label>
+                <div class="radio-group">
+                    {% for radio in form.asistir %}
+                        <div class="radio-option">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                {{ form.asistir.errors }}
+            </div>
+
+            <div class="form-group">
+                <label>¿Tienes alguna alergia o intolerancia?</label>
+                <div class="radio-group">
+                    {% for radio in form.alergia %}
+                        <div class="radio-option">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                {{ form.alergia.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_comentario">Comentarios (alergias, preferencias, etc.)</label>
+                {{ form.comentario }}
+                {{ form.comentario.errors }}
+            </div>
+
+            <div class="form-group">
+                <label>¿Necesitas autobús?</label>
+                <div class="radio-group">
+                    {% for radio in form.autobus %}
+                        <div class="radio-option">
+                            {{ radio.tag }}
+                            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+                {{ form.autobus.errors }}
+            </div>
+              <div class="form-cancion">
+                <label for="id_cancion">Una canción que no pueda faltar: </label>
+                {{ form.cancion }}
+                {{ form.cancion.errors }}
+            </div>
+            <button type="submit">Confirmar Asistencia</button>
+        </form>
+    </div>
+</body>
+</html>

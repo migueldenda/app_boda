@@ -118,7 +118,6 @@
         }
 
         .seccion-autobus::before {
-            content: '🚌';
             position: absolute;
             font-size: 4rem;
             opacity: 0.1;
@@ -246,7 +245,7 @@
                 Esperamos contar contigo para una ocasión tan especial, por eso<br class="br-desktop"> nos encantaría 
                 que nos confirmaras tu asistencia para tener todo listo para el GRAN DÍA
             </p>
-            <a href="#" class="btn-confirmar">Confirmar Aquí</a>
+            <a href="{% url 'formulario' %}" class="btn-confirmar">Confirmar Aquí</a>
         </section>
 
         <section class="seccion seccion-autobus">
