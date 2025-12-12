@@ -243,7 +243,7 @@
     </style>
 </head>
 <body>
-    <a href="{% url 'index' %}#roadmap" class="btn-volver">← Volver</a>
+    <a href="{% url 'pre_formulario' %}#roadmap" class="btn-volver">← Volver</a>
     
     <div class="container-itinerario">
         <h1>FORMULARIO DE ASISTENCIA</h1>
@@ -297,7 +297,7 @@
             </div>
 
             <div class="form-group">
-                <label>¿Necesitas autobús?</label>
+                <label>¿Necesitas autobús? <br>(Fecha límite de confirmación 31/01/26) </label>
                 <div class="radio-group">
                     {% for radio in form.autobus %}
                         <div class="radio-option">
