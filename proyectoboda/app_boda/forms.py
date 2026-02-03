@@ -7,11 +7,11 @@ class InvitadosForm(forms.ModelForm):
         fields = ['nombre', 'apellidos', 'asistir', 'alergia', 'comentario','cancion', 'autobus']
         widgets = {
             'nombre': forms.TextInput(attrs={
-                'placeholder': 'Escribe su nombre',
+                'placeholder': 'Escribe tu nombre',
                 'id': 'id_nombre'
             }),
             'apellidos': forms.TextInput(attrs={
-                'placeholder': 'Escribe sus apellidos',
+                'placeholder': 'Escribe tus apellidos',
                 'id': 'id_apellidos'
             }),
             'comentario': forms.Textarea(attrs={
